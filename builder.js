@@ -83,6 +83,6 @@ function BuilderAPIPath() {
   }
   console.log("BuildJson:", buildJson)
 
-  fs.writeFileSync(basePath, JSON.stringify(buildJson), "utf-8")
+  fs.writeFileSync(config.pathout.replace(/%PATH/g, process.cwd()), JSON.stringify(buildJson), "utf-8")
 }
 BuilderAPIPath()
