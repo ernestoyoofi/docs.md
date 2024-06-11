@@ -63,6 +63,7 @@ function listRoot(rootpath) {
 function BuilderAPIPath() {
   let lists = []
   const dataSc = ScanDocsIndex()
+  console.log("List Docs:", dataSc)
   const basePath = config.pathdoc.replace(/%PATH/g, process.cwd())
   for(let a of dataSc) {
     lists.push({
@@ -80,6 +81,8 @@ function BuilderAPIPath() {
     update_time: new Date().getTime(),
     data: lists
   }
-  console.log(buildJson)
+  console.log("BuildJson:", buildJson)
+
+  fs.writeFileSync(basePath, JSON.stringify(buildJson), "utf-8")
 }
 BuilderAPIPath()
