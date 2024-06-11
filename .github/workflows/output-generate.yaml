@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # - name: 📦 Install dependencies
       #   run: npm install
@@ -19,10 +19,15 @@ jobs:
       - name: 📜 Run builder.js
         run: node builder.js
 
-      - name: ☁️ Commit and push changes
+      - name: 📌 Commit files
+        run: |
+          git config --local user.email "94425296+ernestoyoofi@users.noreply.github.com"
+          git config --local user.name "ernestoyoofi [scripts]"
+          git commit -a -m "Update docs {TIME}"
+
+      - name: ☁️ Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.event.ref.name }}
-          message: "Update docs {TIME}"
           force: true
