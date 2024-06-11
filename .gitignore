@@ -1,0 +1,11 @@
+# Dependencies Nodejs
+node_modules/
+./node_modules/
+package-lock.json
+
+# Runtime Results
+run/
+./run/
+
+# Cat Action
+cataction.yaml
