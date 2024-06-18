@@ -37,7 +37,7 @@ function listRoot(rootpath) {
     if(fs.existsSync(configfpth)) {
       const dataConfig = JSON.parse(fs.readFileSync(configfpth, "utf-8"))
       let listCostumCfg = []
-      Object.entries(dataConfig).forEach(([keySlug, titleDoc]) => {
+      Object.entries(dataConfig?.docs||{}).forEach(([keySlug, titleDoc]) => {
         const dataStg = listDoced.filter(a => path.parse(a.slug).name === keySlug)[0]
         if(!dataStg) return;
         listCostumCfg.push({
@@ -63,8 +63,9 @@ function listRoot(rootpath) {
 function BuilderAPIPath() {
   let lists = []
   const dataSc = ScanDocsIndex()
-  console.log("List Docs:", dataSc)
   const basePath = config.pathdoc.replace(/%PATH/g, process.cwd())
+  console.log("Base Path:", basePath)
+  console.log("Data List:", dataSc)
   for(let a of dataSc) {
     lists.push({
       title: a.title,
@@ -81,8 +82,7 @@ function BuilderAPIPath() {
     update_time: new Date().getTime(),
     data: lists
   }
-  console.log("BuildJson:", buildJson)
 
-  fs.writeFileSync(config.pathout.replace(/%PATH/g, process.cwd()), JSON.stringify(buildJson), "utf-8")
+  fs.writeFileSync(config.pathout.replace(/%PATH/g, process.cwd()), JSON.stringify(buildJson,null,2), "utf-8")
 }
 BuilderAPIPath()
