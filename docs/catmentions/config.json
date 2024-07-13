@@ -2,9 +2,9 @@
   "title": "Bantuan Cat Mentions",
   "description": "Halaman bantuan untuk aplikasi Cat Mentions",
   "docs": {
-    "introduction": "📝 Introduction",
-    "help": "📦 Docs Help",
-    "open-source-lib": "📄 Open Source Library",
-    "support-issues": "🎧 Support Issues"
+    "introduction": "Introduction",
+    "help": "Docs Help",
+    "developer": "Developer API",
+    "open-source-lib": "Open Source Library"
   }
 }
